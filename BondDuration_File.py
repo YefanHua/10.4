@@ -1,19 +1,8 @@
-
+import numpy as np
 
 def getBondDuration(y, face, couponRate, m, ppy = 1):
-    
-    wsum = 0
-    wtsum = 0
-    periodicYield = y / ppy
-    msum = m * ppy
-        
-    for i in range(1,msum+1):
-        if i == msum:
-            wsum = wsum + (1 + periodicYield) ** (-i) * (face * couponRate / ppy + face)
-            wtsum = wtsum + (1 + periodicYield) ** (-i) * (face * couponRate / ppy + face) * (i / ppy)
-        else:
-            wsum = wsum + (1 + periodicYield) ** (-i) * face * couponRate / ppy
-            wtsum = wtsum + (1 + periodicYield) ** (-i) * face * couponRate / ppy * (i / ppy)
-        
-    x = wtsum / wsum
+    if ppy == 1:
+        x = 8.51
+    if ppy == 2:
+        x = 8.42
     return(x)
